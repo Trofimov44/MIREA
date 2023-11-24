@@ -10,9 +10,9 @@ int main() {
 	int m, b, c, D;
 	int s = 0;
 	bool a;
-	cout << "Выберите вариант ";
+	cout << "Выберите вариант(0 - первый вариант, 1 - торой вариант) ";
 	if (!(cin >> a)) {
-		cout << "неверное число" << endl;
+		cout << "неверный символ" << endl;
 		return 0;
 	}
 	if (a == 1) {
@@ -23,7 +23,7 @@ int main() {
 			float D = (m * s + b) % c;
 			s = D;
 			cout << D << endl;
-			
+
 		}
 	}
 	else {
