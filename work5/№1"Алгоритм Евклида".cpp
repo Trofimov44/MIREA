@@ -33,10 +33,15 @@ void fdso(int a, int b) {
 		cout << "вычитанием " << a << endl;
 	}
 }
-int main(){
+int main() {
 	setlocale(LC_ALL, "RUS");
-	int a = 200, b = 100, x = 1;
-		dssd(a, b);
-		fdso(a, b);
+	cout << "Введите два числа ";
+	int a, b;
+	if (!(cin >> a >> b)) {
+		cout << "Неверно";
+		return 0;
+	}
+	dssd(a, b);
+	fdso(a, b);
 	return 0;
 }
