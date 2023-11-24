@@ -5,6 +5,7 @@
 using namespace std;
 
 int z(char a, char b) {
+    setlocale(LC_ALL, "RUS");
     if (tolower(a) == tolower(b)) {
         return a < b;
     }
