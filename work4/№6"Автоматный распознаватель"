@@ -31,8 +31,8 @@ int main() {
     string romanNumeral;
     cout << "Введите римское число: ";
     cin >> romanNumeral;
-    string numbers[] = {"IM", "ID", "IC","IL", "VX", "VL", "VC","VD", "VM", "XD", "XM", "LC","LD", "LM", "DM", "VVV", "XXX",
-        "LLL", "CCC", "DDD", "MMM"};
+    string numbers[] = {"IM", "ID", "IC","IL", "VX", "VL", "VC","VD", "VM", "XD", "XM", "LC","LD", "LM", "DM", "VV","LL", "DD", "IIII", "XXXX",
+        "CCCC", "MMMM"};
     auto it = find(begin(numbers), end(numbers), romanNumeral);
 
     bool found = false;
