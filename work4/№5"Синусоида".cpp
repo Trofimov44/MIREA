@@ -18,11 +18,11 @@ int main() {
                 cout << "-";
             }
             // Рисуем осевые + на краях средней линии
-            else if ((x == 0 && y == amplitude) || (x == width - 1 && y == amplitude)) {
+            else if ((x == 0 and y == amplitude) or (x == width - 1 and y == amplitude)) {
                 cout << "+";
             }
             // Вычисляем, где должны находиться экстремумы
-            else if (x == static_cast<int>((3.14159 / 2 + 3.14159 * floor(frequency * x / 3.14159)) / frequency) ||
+            else if (x == static_cast<int>((3.14159 / 2 + 3.14159 * floor(frequency * x / 3.14159)) / frequency) or
                 x == static_cast<int>((3 * 3.14159 / 2 + 3.14159 * floor(frequency * x / 3.14159)) / frequency)) {
                 cout << "|"; // E - обозначение экстремума
             }
