@@ -33,6 +33,7 @@ void fdso(int a, int b) {
 		cout << "вычитанием " << a << endl;
 	}
 }
+
 int main() {
 	setlocale(LC_ALL, "RUS");
 	cout << "Введите два числа ";
