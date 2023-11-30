@@ -25,40 +25,58 @@ int Hex(char HexNum) {
 }
 
 int Ten(int a, int b) {
+    setlocale(LC_ALL, "Rus");
+    string c = to_string(a);
+    for (int i = 0; i < c.length(); i++) {
+        if (Hex(c[i]) > b) {
+            cout << "Ошибка" << endl;
+            exit(0);
+        }
+        
+    }
     if (b > 16) {
         cout << "Ошибка" << endl;
+        exit(0);
     }
 
     else {
         int y = 0;
-        string c = to_string(a);
+        
         for (int i = 0; i < c.length(); i++) {
             char pipa = c[i];
             int biba = static_cast<int>(c.length());
-            int x = Hex(pipa) * pow(b, biba - i-1);
+            int x = Hex(pipa) * pow(b, biba - i - 1);
             y += x;
         }
         return y;
-    }   
+    }
 }
 
 string Any(int a, int b, int c) {
-    int x = Ten(a, b);
-    string y = "";
-    while (x > 0) {
-        int pipa = x % c;
-        y = to_string(pipa) + y;
-        x /= c;
+    if (c > 16) {
+        cout << "Ошибка" << endl;
+        exit(0);
     }
-    return y;
+    else {
+    int x = Ten(a, b);
+        string y = "";
+        while (x > 0) {
+            int pipa = x % c;
+            y = to_string(pipa) + y;
+            x /= c;
+        }
+        return y;
+    }
+    
 }
 
 int main()
-{
+{   
+
     int a, b, c;
     if (!(cin >> a >> b >> c)) {
         cout << "Ошибка" << endl;
     }
-    cout << Any(a, b, c) << endl;
+    cout << Any(234, 16, 10) << endl;
     return 0;
 }
