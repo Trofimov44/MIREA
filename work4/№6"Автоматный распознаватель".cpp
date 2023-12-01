@@ -31,13 +31,13 @@ int main() {
     string romanNumeral;
     cout << "Введите римское число: ";
     cin >> romanNumeral;
-    string numbers[] = {"IM", "ID", "IC","IL", "VX", "VL", "VC","VD", "VM", "XD", "XM", "LC","LD", "LM", "DM", "VV","LL", "DD", "IIII", "XXXX",
-        "CCCC", "MMMM"};
+    string numbers[] = { "IM", "ID", "IC","IL", "VX", "VL", "VC","VD", "VM", "XD", "XM", "LC","LD", "LM", "DM", "VV","LL", "DD", "IIII", "XXXX",
+        "CCCC", "MMMM" };
     auto it = find(begin(numbers), end(numbers), romanNumeral);
 
     bool found = false;
 
-    for (const string & syllable : numbers) {
+    for (const string& syllable : numbers) {
         size_t position = romanNumeral.find(syllable);
         if (position != string::npos) {
             found = true;
@@ -49,18 +49,22 @@ int main() {
     }
     else {
         int decimalNum = 0;
-    for (int i = 0; i < romanNumeral.length(); i++) {
-        int currentNum = Chisla(romanNumeral[i]);
-        int nextNum = (i + 1 < romanNumeral.length()) ? Chisla(romanNumeral[i + 1]) : 0;
+        for (int i = 0; i < romanNumeral.length(); i++) {
+            if (Chisla(romanNumeral[i]) == 0) {
+                cout << "Ошибка";
+                exit(0);
+            }
+            int currentNum = Chisla(romanNumeral[i]);
+            int nextNum = (i + 1 < romanNumeral.length()) ? Chisla(romanNumeral[i + 1]) : 0;
 
-        if (currentNum >= nextNum) {
-            decimalNum += currentNum;
+            if (currentNum >= nextNum) {
+                decimalNum += currentNum;
+            }
+            else {
+                decimalNum -= currentNum;
+            }
         }
-        else {
-            decimalNum -= currentNum;
-        }
-    }
-    cout << "Десятичное представление: " << decimalNum << endl;
+        cout << "Десятичное представление: " << decimalNum << endl;
     }
 
     return 0;
