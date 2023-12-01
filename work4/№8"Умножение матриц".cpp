@@ -1,6 +1,7 @@
 #include <iostream>
 using namespace std;
 int main() {
+    setlocale(LC_ALL, "RUS");
     float matrix1[3][4] = { {5., 2., 0, 10.},
                            {3., 5., 2., 5.},
                            {20., 0, 0, 0} };
