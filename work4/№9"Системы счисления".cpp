@@ -46,11 +46,10 @@ string HexR(int HexNum) {
 }
 
 
-int Ten(int a, int b) {
+int Ten(string a, int b) {
     setlocale(LC_ALL, "Rus");
-    string c = to_string(a);
-    for (int i = 0; i < c.length(); i++) {
-        if (Hex(c[i]) > b) {
+    for (int i = 0; i < a.length(); i++) {
+        if (Hex(a[i]) > b) {
             cout << "Ошибка" << endl;
             exit(0);
         }
@@ -64,20 +63,19 @@ int Ten(int a, int b) {
     else {
         int y = 0;
 
-        for (int i = 0; i < c.length(); i++) {
-            int biba = static_cast<int>(c.length());
-            int x = Hex(c[i]) * pow(b, biba - i - 1);
+        for (int i = 0; i < a.length(); i++) {
+            int biba = static_cast<int>(a.length());
+            int x = Hex(a[i]) * pow(b, biba - i - 1);
             y += x;
         }
         return y;
     }
 }
 
-string Any(int a, int b, int c) {
+string Any(string a, int b, int c) {
     setlocale(LC_ALL, "RUS");
-    string x = to_string(a);
-    for (int j = 0; j < x.length(); j++) {
-        if (Hex(x[j]) > b or Hex(x[j]) > c) {
+    for (int j = 0; j < a.length(); j++) {
+        if (Hex(a[j]) > b or Hex(a[j]) > c) {
             cout << "Ошибка" << endl;
             exit(0);
         }
@@ -102,8 +100,8 @@ string Any(int a, int b, int c) {
 
 int main()
 {
-
-    int a, b, c;
+    string a;
+    int b, c;
     if (!(cin >> a >> b >> c)) {
         cout << "Ошибка" << endl;
     }
