@@ -49,7 +49,7 @@ string HexR(int HexNum) {
 int Ten(string a, int b) {
     setlocale(LC_ALL, "Rus");
     for (int i = 0; i < a.length(); i++) {
-        if (Hex(a[i]) > b) {
+        if (Hex(a[i]) > b - 1) {
             cout << "Ошибка" << endl;
             exit(0);
         }
@@ -74,13 +74,7 @@ int Ten(string a, int b) {
 
 string Any(string a, int b, int c) {
     setlocale(LC_ALL, "RUS");
-    for (int j = 0; j < a.length(); j++) {
-        if (Hex(a[j]) > b or Hex(a[j]) > c) {
-            cout << "Ошибка" << endl;
-            exit(0);
-        }
 
-    }
     if (c > 16 or b == c) {
         cout << "Ошибка" << endl;
         exit(0);
@@ -99,10 +93,23 @@ string Any(string a, int b, int c) {
 }
 
 int main()
-{
+{   
+    setlocale(LC_ALL, "Rus");
     string a;
     int b, c;
-    if (!(cin >> a >> b >> c)) {
+    cout << "Введите число, которое хотите перевести: ";
+    
+    if (!(cin >> a )) {
+        cout << "Ошибка" << endl;
+    }
+
+    cout << "Введите систему счисления этого числа: ";
+    if (!(cin >> b)) {
+        cout << "Ошибка" << endl;
+    }
+
+    cout << "Введите систему, в которую хотите перевести число: ";
+    if (!(cin >> c)) {
         cout << "Ошибка" << endl;
     }
     cout << Any(a, b, c) << endl;
