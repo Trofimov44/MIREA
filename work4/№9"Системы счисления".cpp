@@ -45,11 +45,10 @@ string HexR(int HexNum) {
     }
 }
 
-
 int Ten(string a, int b) {
     setlocale(LC_ALL, "Rus");
     for (int i = 0; i < a.length(); i++) {
-        if (Hex(a[i]) > b - 1) {
+        if (Hex(a[i]) > b - 1 or Hex(a[i]) == 0) {
             cout << "Ошибка" << endl;
             exit(0);
         }
@@ -75,7 +74,7 @@ int Ten(string a, int b) {
 string Any(string a, int b, int c) {
     setlocale(LC_ALL, "RUS");
 
-    if (c > 16 or b == c) {
+    if (c > 16 or b == c or b < 2 or c < 2) {
         cout << "Ошибка" << endl;
         exit(0);
     }
@@ -112,6 +111,7 @@ int main()
     if (!(cin >> c)) {
         cout << "Ошибка" << endl;
     }
+
     cout << Any(a, b, c) << endl;
     return 0;
 }
