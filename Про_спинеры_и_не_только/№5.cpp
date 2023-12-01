@@ -5,7 +5,7 @@ int main() {
     int n, k;
 
     cout << "enter : ";
-    if (cin >> n >> k && k > 1 && k <= n) {
+    if (cin >> n >> k and k > 1 and k <= n) {
         while (k > 1) {
             n = (n - k % 2) / 2;
             k /= 2;
