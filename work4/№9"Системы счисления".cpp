@@ -20,7 +20,7 @@ int Hex(char HexNum) {
     case 'D': return 13;
     case 'E': return 14;
     case 'F': return 15;
-    default: return 0;
+    default: return 16;
     }
 }
 
@@ -48,7 +48,7 @@ string HexR(int HexNum) {
 int Ten(string a, int b) {
     setlocale(LC_ALL, "Rus");
     for (int i = 0; i < a.length(); i++) {
-        if (Hex(a[i]) > b - 1 or Hex(a[i]) == 0) {
+        if (Hex(a[i]) > b - 1 or Hex(a[i]) == 16) {
             cout << "Ошибка" << endl;
             exit(0);
         }
@@ -92,13 +92,13 @@ string Any(string a, int b, int c) {
 }
 
 int main()
-{   
+{
     setlocale(LC_ALL, "Rus");
     string a;
     int b, c;
     cout << "Введите число, которое хотите перевести: ";
-    
-    if (!(cin >> a )) {
+
+    if (!(cin >> a)) {
         cout << "Ошибка" << endl;
     }
 
