@@ -66,17 +66,6 @@ int main() {
 
         generate_permutation(balls, n, 0, count_matches, valid_permutations);
 
-        /*cout << "\npermutations with at least one match:\n";
-        for (int i = 0; i < valid_permutations.size(); i++) {
-            print_permutation(valid_permutations[i], n);*/
-        //}
-        cout << "\ntotal number of permutations with at least one match: " << count_matches << endl << endl;
-
-        //cout << "\nall permutations:\n";
-        //do {
-        //   print_permutation(balls, n);
-        //} while (next_permutation(balls, balls + n));
-
         int total_permutations = 1;
         for (int i = 1; i <= n; i++) {
             total_permutations *= i;
