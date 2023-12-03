@@ -8,8 +8,9 @@ int main() {
 	setlocale(LC_ALL, "rus");
 	int n;
 	int a, b;
-	if (!(cin >> n)) {
-		cout << "Неверно";
+	cout << "Введите число: ";
+	if (!(cin >> n) or n <= 0) {
+		cout << "Ошибка";
 		return 0;
 	}
 	double x = 0, c = 0, y = 0;
