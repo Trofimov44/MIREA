@@ -31,7 +31,12 @@ void da(int n, int m, int x[]) {
 
 int main() {
 	setlocale(LC_ALL, "rus");
-	int n = 124;
+	int n;
+	cout << "Введите число: ";
+	if(!(cin >> n)) {
+		cout << "Ошибка" << endl;
+		return 0;
+	}
 	int a = n - 1;
 	int m = 2;
 	int* x = new int[a];
