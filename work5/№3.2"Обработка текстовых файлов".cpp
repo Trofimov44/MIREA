@@ -25,7 +25,7 @@ int main() {
         cerr << "Не удалось прочитать строку из файла." << endl;
     }
 
-    inputFile.close();  // Закрытие файла
+    inputFile.close();
 
     return 0;
 }
