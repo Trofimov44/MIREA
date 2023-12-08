@@ -38,8 +38,8 @@ int main() {
 	setlocale(LC_ALL, "RUS");
 	cout << "Введите два числа ";
 	int a, b;
-	if (!(cin >> a >> b)) {
-		cout << "Неверно";
+	if (!(cin >> a >> b) or a < 0 or b < 0) {
+		cout << "Ошибка";
 		return 0;
 	}
 	dssd(a, b);
