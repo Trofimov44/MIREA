@@ -6,10 +6,10 @@ using namespace std;
 void da(int n, int m, int x[]) {
 	setlocale(LC_ALL, "rus");
 	if (m < n) {
-		if (x[m] != 0) { 
+		if (x[m] != 0) {
 			int j = m * 2;
 			while (j < n) {
-				x[j] = 0; 
+				x[j] = 0;
 				j = j + m;
 			}
 			m += 1;
@@ -33,7 +33,7 @@ int main() {
 	setlocale(LC_ALL, "rus");
 	int n;
 	cout << "Введите число: ";
-	if(!(cin >> n)) {
+	if (!(cin >> n) or n < 0) {
 		cout << "Ошибка" << endl;
 		return 0;
 	}
