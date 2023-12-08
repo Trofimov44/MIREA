@@ -43,42 +43,42 @@ void generate(int permutation[], int n, int i, int& count, vector<int*>& valid_p
 int main() {
     setlocale(LC_ALL, "Rus");
 
-        int n;
-        while (true) {
-            cout << "Введите количество шаров: ";
-            if (!(cin >> n)) {
-                cin.clear();
-                cin.ignore();
-                cout << "\nОшибка\n";
-                continue;
-            }
-            break;
+    int n;
+    while (true) {
+        cout << "Введите количество шаров: ";
+        if (!(cin >> n) or n > 12) {
+            cin.clear();
+            cin.ignore();
+            cout << "\nОшибка\n";
+            continue;
         }
+        break;
+    }
 
-        int* balls = new int[n];
-        for (int i = 0; i < n; i++) {
-            balls[i] = i + 1;
-        }
+    int* balls = new int[n];
+    for (int i = 0; i < n; i++) {
+        balls[i] = i + 1;
+    }
 
-        int count_matches = 0;
-        vector<int*> valid_permutations;
+    int count_matches = 0;
+    vector<int*> valid_permutations;
 
-        generate(balls, n, 0, count_matches, valid_permutations);
+    generate(balls, n, 0, count_matches, valid_permutations);
 
-        cout << "\nОбщее количество перестановок хотя бы с одним совпадением: " << count_matches;
+    cout << "\nОбщее количество перестановок хотя бы с одним совпадением: " << count_matches;
 
-        int total_permutations = 1;
-        for (int i = 1; i <= n; i++) {
-            total_permutations *= i;
-        }
+    int total_permutations = 1;
+    for (int i = 1; i <= n; i++) {
+        total_permutations *= i;
+    }
 
-        cout << "\nВсего перестановок:" << total_permutations << "\n" << endl;
+    cout << "\nВсего перестановок:" << total_permutations << "\n" << endl;
 
-        for (int i = 0; i < valid_permutations.size(); i++) {
-            delete[] valid_permutations[i];
-        }
+    for (int i = 0; i < valid_permutations.size(); i++) {
+        delete[] valid_permutations[i];
+    }
 
-        delete[] balls;
+    delete[] balls;
 
 
     return 0;
