@@ -4,7 +4,7 @@ using namespace std;
 int main() {
     int n, k;
 
-    cout << "enter : ";
+    cout << "Ведите N и K : ";
     if (cin >> n >> k and k > 1 and k <= n) {
         while (k > 1) {
             n = (n - k % 2) / 2;
