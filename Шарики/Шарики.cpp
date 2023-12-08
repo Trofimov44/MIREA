@@ -11,7 +11,7 @@ void print_permutation(int permutation[], int size) {
     cout << endl;
 }
 
-void generate_permutation(int permutation[], int n, int i, int& count, vector<int*>& valid_permutations) {
+void generate(int permutation[], int n, int i, int& count, vector<int*>& valid_permutations) {
     if (i == n) {
         bool has_match = false;
         for (int j = 0; j < n; j++) {
@@ -34,7 +34,7 @@ void generate_permutation(int permutation[], int n, int i, int& count, vector<in
     for (int j = i; j < n; j++) {
         swap(permutation[i], permutation[j]);
 
-        generate_permutation(permutation, n, i + 1, count, valid_permutations);
+        generate(permutation, n, i + 1, count, valid_permutations);
 
         swap(permutation[i], permutation[j]);
     }
@@ -64,7 +64,7 @@ int main() {
         int count_matches = 0;
         vector<int*> valid_permutations;
 
-        generate_permutation(balls, n, 0, count_matches, valid_permutations);
+        generate(balls, n, 0, count_matches, valid_permutations);
 
         cout << "\nОбщее количество перестановок хотя бы с одним совпадением: " << count_matches;
 
