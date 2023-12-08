@@ -42,7 +42,6 @@ void generate(int permutation[], int n, int i, int& count, vector<int*>& valid_p
 
 int main() {
     setlocale(LC_ALL, "Rus");
-    while (true) {
 
         int n;
         while (true) {
@@ -50,7 +49,7 @@ int main() {
             if (!(cin >> n)) {
                 cin.clear();
                 cin.ignore();
-                cout << "\nerror!\n";
+                cout << "\nОшибка\n";
                 continue;
             }
             break;
@@ -80,7 +79,6 @@ int main() {
         }
 
         delete[] balls;
-    }
 
 
     return 0;
