@@ -5,7 +5,8 @@
 using namespace std;
 
 int main() {
-    string filename = "word_data.txt";
+    setlocale(LC_ALL, "rus");
+    string filename = "text.txt";
     vector<string> words;
 
     ifstream inFile(filename);
@@ -30,7 +31,7 @@ int main() {
 
     ofstream outFile(filename);
     if (outFile.is_open()) {
-        for (const auto& word : words) {
+        for (const auto word : words) {
             outFile << word << endl;
         }
         outFile.close();
