@@ -28,7 +28,7 @@ int main() {
 
     sort(words.begin(), words.end());
 
-    std::ofstream outFile(filename);
+    ofstream outFile(filename);
     if (outFile.is_open()) {
         for (const auto& word : words) {
             outFile << word << endl;
