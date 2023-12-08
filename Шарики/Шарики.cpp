@@ -46,7 +46,7 @@ int main() {
     int n;
     while (true) {
         cout << "Введите количество шаров: ";
-        if (!(cin >> n) or n > 12) {
+        if (!(cin >> n) or n > 11) {
             cin.clear();
             cin.ignore();
             cout << "\nОшибка\n";
