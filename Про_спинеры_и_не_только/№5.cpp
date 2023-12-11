@@ -1,23 +1,59 @@
-#include <iostream>
+#include<iostream>
 using namespace std;
 
+
+int x(int* a, int n)
+{
+	int mx = 0, indx = -1;
+
+	for (int i = 0; i < n; ++i) {
+		if (a[i] > mx) {
+			mx = a[i];
+			indx = i;
+		}
+	}
+
+	return indx;
+}
+
+
+
 int main() {
-        int n, k;
 
-        cout << "Введите N и K: ";
-        if (cin >> n >> k && k >= 1 && k <= n) {
-            while (k >= 1) {
-                n = (n - k % 2) / 2;
-                k /= 2;
-            }
+	unsigned int n, k, t, l, indx;
 
-            int left_seats = (n - 1) / 2;
-            int right_seats = n / 2;
+	cout << "N, K:";
+	if (!(cin >> n >> t)) {
+		cout << "Ошибка" << endl;
+	}
 
-            cout << left_seats << endl;
-            cout << right_seats << endl;
-        }
-        else {
-            cout << "Ошибка ";
-        }
-    }
+	int* a = new int(n);
+	a[0] = n;
+	n = 1;
+
+	for (int i = 0; i < t; ++i) {
+
+		indx = x(a, n);
+
+		if (a[indx] % 2 == 0) {
+			k = a[indx] / 2;
+			l = k - 1;
+		}
+		else {
+			k = a[indx] / 2;
+			l = k;
+		}
+
+		a[n] = k; n++;
+		a[n] = l; n++;
+		a[indx] = 0;
+
+	}
+
+	cout << k << " " << l;
+
+
+
+
+	return 0;
+}
