@@ -17,7 +17,7 @@ int main() {
 
 	unsigned int n, k, t, l, indx;
 
-	cout << "N, K:";
+	cout << "Введите N, K: ";
 	if (!(cin >> n >> t)) {
 		cout << "Ошибка" << endl;
 	}
