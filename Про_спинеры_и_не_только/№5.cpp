@@ -1,7 +1,6 @@
 #include<iostream>
 using namespace std;
 
-
 int x(int* a, int n)
 {
 	int mx = 0, indx = -1;
@@ -12,12 +11,8 @@ int x(int* a, int n)
 			indx = i;
 		}
 	}
-
 	return indx;
 }
-
-
-
 int main() {
 
 	unsigned int n, k, t, l, indx;
@@ -30,11 +25,8 @@ int main() {
 	int* a = new int(n);
 	a[0] = n;
 	n = 1;
-
 	for (int i = 0; i < t; ++i) {
-
 		indx = x(a, n);
-
 		if (a[indx] % 2 == 0) {
 			k = a[indx] / 2;
 			l = k - 1;
@@ -43,17 +35,11 @@ int main() {
 			k = a[indx] / 2;
 			l = k;
 		}
-
 		a[n] = k; n++;
 		a[n] = l; n++;
 		a[indx] = 0;
-
 	}
 
 	cout << k << " " << l;
-
-
-
-
 	return 0;
 }
