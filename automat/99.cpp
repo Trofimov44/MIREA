@@ -1,3 +1,4 @@
+№99
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
@@ -7,69 +8,75 @@
 
 using namespace std;
 
-HANDLE console = GetStdHandle(STD_OUTPUT_HANDLE);
-
-int generate_number() {
-    srand(static_cast<unsigned>(time(0)));
-
-    int number;
-    bool digits[10] = { false };
-
-    int temp;
-
-    do {
-        number = rand() % 9000 + 1000;
-
-        temp = number;
-
-        while (temp > 0) {
-            if (digits[temp % 10]) {
-                break;
-            }
-            digits[temp % 10] = true;
-            temp /= 10;
-        }
-
-        fill(begin(digits), end(digits), false);
-
-    } while (temp > 0);
-
-    return number;
-}
-
-bool is_valid_input(int number) {
-    if (number < 1000 || number > 9999) {
+// Проверка правильности введенного пользователем числа
+bool is_input_valid(int input_number) {
+    // Проверка на четырехзначность числа
+    if (input_number < 1000 or input_number > 9999) {
         return false;
     }
 
-    bool digits[10] = { false };
-    while (number > 0) {
-        if (digits[number % 10]) {
+    // Проверка на уникальность цифр в числе
+    bool digits_exist[10] = { false };
+    while (input_number > 0) {
+        if (digits_exist[input_number % 10]) {
             return false;
         }
-        digits[number % 10] = true;
-        number /= 10;
+        digits_exist[input_number % 10] = true;
+        input_number /= 10;
     }
 
     return true;
 }
 
-void check_guess(int secret_number, int user_number, int& pluses, int& minuses) {
-    pluses = minuses = 0;
+// Генерация случайного числа с уникальными цифрами
+int create_random_number() {
+    int generated_number;
+    bool digits_exist[10] = { false };
 
+    int temp_value;
+
+    do {
+        // Генерация случайного числа от 1000 до 9999
+        generated_number = rand() % 9000 + 1000;
+
+        temp_value = generated_number;
+
+        // Проверка на уникальность цифр в сгенерированном числе
+        while (temp_value > 0) {
+            if (digits_exist[temp_value % 10]) {
+                break;
+            }
+            digits_exist[temp_value % 10] = true;
+            temp_value /= 10;
+        }
+
+        fill(begin(digits_exist), end(digits_exist), false);
+
+    } while (temp_value > 0);
+
+    return generated_number;
+}
+
+// Оценка попытки пользователя
+void evaluate_guess(int secret_value, int user_value, int& correct_digits, int& misplaced_digits) {
+    correct_digits = misplaced_digits = 0;
+
+    // Перебор цифр в числах
     for (int i = 0; i < 4; ++i) {
-        int secret_digit = (secret_number / static_cast<int>(pow(10, 3 - i))) % 10;
-        int user_digit = (user_number / static_cast<int>(pow(10, 3 - i))) % 10;
+        int secret_digit = (secret_value / static_cast<int>(pow(10, 3 - i))) % 10;
+        int user_digit = (user_value / static_cast<int>(pow(10, 3 - i))) % 10;
 
+        // Проверка на совпадение цифр на одинаковых позициях
         if (secret_digit == user_digit) {
-            ++pluses;
+            ++correct_digits;
         }
         else {
+            // Поиск совпадения цифры на другой позиции
             for (int j = 0; j < 4; ++j) {
-                int temp_secret_digit = (secret_number / static_cast<int>(pow(10, 3 - j))) % 10;
+                int temp_secret_digit = (secret_value / static_cast<int>(pow(10, 3 - j))) % 10;
 
-                if (temp_secret_digit == user_digit && i != j) {
-                    ++minuses;
+                if (temp_secret_digit == user_digit and i != j) {
+                    ++misplaced_digits;
                     break;
                 }
             }
@@ -77,44 +84,40 @@ void check_guess(int secret_number, int user_number, int& pluses, int& minuses) 
     }
 }
 
-void set_color(int color) {
-    SetConsoleTextAttribute(console, color);
-}
-
 int main() {
     setlocale(LC_ALL, "rus");
-    int secret_number = generate_number();
-    int user_number, pluses, minuses, attempts = 0;
+    int secret_value = create_random_number();
+    int user_value, correct_digits, misplaced_digits, attempts_count = 0;
 
-
-    cout << secret_number << endl << endl;
+    cout << secret_value << endl << endl;
 
     do {
+        // Ввод числа пользователем с проверкой
         do {
             while (true) {
-                cout << "Ведите четырёхзначное число: ";
-                if (!(cin >> user_number)) {
-                    cin.clear();
-                    cin.ignore();
+                cout << "Введите четырёхзначное число: ";
+                if (!(cin >> user_value)) {
                     cout << "Ошибка\n";
                     continue;
                 }
                 break;
             }
 
-            if (!is_valid_input(user_number)) {
+            // Повторный запрос ввода при неверном числе
+            if (!is_input_valid(user_value)) {
                 cout << "\nОшибка\n";
             }
-        } while (!is_valid_input(user_number));
+        } while (!is_input_valid(user_value));
 
-        check_guess(secret_number, user_number, pluses, minuses);
+        // Оценка введенного пользователем числа
+        evaluate_guess(secret_value, user_value, correct_digits, misplaced_digits);
 
-        cout << "\nРезультат " << pluses << " плюсов " << minuses << " минусов! \n";
+        cout << "\nРезультат " << correct_digits << " правильных " << misplaced_digits << " не на своём месте! \n";
 
-        ++attempts;
-    } while (pluses < 4);
+        ++attempts_count;
+    } while (correct_digits < 4);
 
-    cout << "\nВы угадали номер " << secret_number << " за " << attempts << "попыток. \n";
+    cout << "\nВы угадали значение " << secret_value << " за " << attempts_count << " попыток. \n";
 
     return 0;
 }
