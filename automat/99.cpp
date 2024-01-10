@@ -1,4 +1,3 @@
-№99
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
